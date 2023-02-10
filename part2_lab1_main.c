@@ -200,9 +200,9 @@ static void vComputeTask( void *pvParameters )
 		/***************************************/
 		//write the code to receive the queue elements inside "store_operands" (it is declared in this task)
 
-		xQueueReceive(xQueue1, store_operands, delay);
-		xQueueReceive(xQueue1, store_operands + 1, delay);
-		xQueueReceive(xQueue1, store_operands + 2, delay);
+		xQueueReceive(xQueue1, store_operands, 0);
+		xQueueReceive(xQueue1, store_operands + 1, 0);
+		xQueueReceive(xQueue1, store_operands + 2, 0);
 
 		/***************************************/
 
