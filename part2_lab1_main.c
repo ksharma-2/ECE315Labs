@@ -170,9 +170,9 @@ static void vInputTask( void *pvParameters )
 	        	 /*****************************************/
 	        	 //write the code to send the "operand_store" to the queue that has handle "xQueue1"
 
-	        	 xQueueSend(xQueue1, operand_store, delay);
-	        	 xQueueSend(xQueue1, operand_store + 1, delay);
-	        	 xQueueSend(xQueue1, operand_store + 2, delay);
+	        	 xQueueSend(xQueue1, operand_store, 0);
+	        	 xQueueSend(xQueue1, operand_store + 1, 0);
+	        	 xQueueSend(xQueue1, operand_store + 2, 0);
 
 	        	 /*****************************************/
 	        	 itr_queue=0;
@@ -200,9 +200,9 @@ static void vComputeTask( void *pvParameters )
 		/***************************************/
 		//write the code to receive the queue elements inside "store_operands" (it is declared in this task)
 
-		xQueueReceive(xQueue1, store_operands, 0);
-		xQueueReceive(xQueue1, store_operands + 1, 0);
-		xQueueReceive(xQueue1, store_operands + 2, 0);
+		xQueueReceive(xQueue1, store_operands, delay);
+		xQueueReceive(xQueue1, store_operands + 1, delay);
+		xQueueReceive(xQueue1, store_operands + 2, delay);
 
 		/***************************************/
 
