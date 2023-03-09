@@ -305,7 +305,6 @@ static void TaskSpi0Peripheral( void *pvParameters ){
 			if (temp_store != DOLLAR) {
 				num_received++;
 				if(temp_store == CHAR_CARRIAGE_RETURN && end_sequence_flag == 2) {
-					message_counter++;
 					str_length = sprintf(buffer, "\n\nThe number of characters received over SPI:%d\nNumber of messages received so far across SPI: %d\n\n", num_received, message_counter);
 					num_received = 0;
 					message_counter = 0;
@@ -321,6 +320,7 @@ static void TaskSpi0Peripheral( void *pvParameters ){
 					end_sequence_flag += 1;
 				} else if (temp_store == CHAR_CARRIAGE_RETURN && end_sequence_flag == 0){
 					end_sequence_flag += 1;
+					message_counter++;
 				} else {
 					end_sequence_flag = 0;
 				}
